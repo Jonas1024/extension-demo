@@ -80,15 +80,21 @@ export const Welcome = () => {
 		setStep('step3');
 	}
 	async function handleClickCreatePassword() {
-		if (!isIdentityPresent) {
+		console.log("handleClickCreatePassword");
+		// if (!isIdentityPresent) {
+			console.log("handleClickCreatePassword 1");
 			const identity = await IdentityServices.createIdentity();
+			console.log("handleClickCreatePassword 2");
 			localStorage.setItem('accounts', JSON.stringify([{ name: DEFAULT_ACCOUNT_NAME, did: identity.did.string(), isActive: true }]));
+			console.log("handleClickCreatePassword 3");
 			window.dispatchEvent(new Event("storage"));
+			console.log("handleClickCreatePassword 4");
 			if (state)
 				navigate(state);
 			else
 				navigate('/');
-		}
+		// }
+		console.log("handleClickCreatePassword 0");
 	}
 	return (
 		<div>

@@ -52,7 +52,7 @@ export const Auth = () => {
     const { type, body } = unpackedMessage;
     const { scope = [] } = body;
 
-    if (type.includes("request") && scope.length) {
+    if (type.includes("request") && scope && scope.length) {
       return RequestType.Proof;
     } else if (type.includes("offer")) {
       return RequestType.CredentialOffer;
@@ -66,6 +66,8 @@ export const Auth = () => {
     let ignore = false;
     const { packageMgr, dataStorage } = ExtensionService.getExtensionServiceInstance();
     const fetchData = async () => {
+      console.log("dataType: " + dataType);
+      console.log("paayload: " + payload);
       let msgBytes;
       if (dataType === "base64") {
         msgBytes = base64ToBytes(payload);
@@ -77,6 +79,7 @@ export const Auth = () => {
             (res) => new Uint8Array(res)
           );
       }
+      console.log("msgBytes: " + msgBytes);
       const { unpackedMessage } = await packageMgr.unpack(msgBytes);
       setMsgBytes(msgBytes);
       if (!ignore) {
@@ -121,6 +124,7 @@ export const Auth = () => {
     setIsReady(false);
     try {
       const result = await proofMethod(msgBytes);
+      
       if (result.data?.type && result.data.type === PROTOCOL_CONSTANTS.PROTOCOL_MESSAGE_TYPE.AUTHORIZATION_REQUEST_MESSAGE_TYPE) {
         const newPayload = Base64.encode(JSON.stringify(result.data));
         navigate("/");

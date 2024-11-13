@@ -6,6 +6,7 @@ import "./styles.css";
 
 export const CredentialDetails = (props) => {
   const { credential } = props;
+  console.log("credential: " + JSON.stringify(credential, null, 2));
   const subjectData = Object.keys(credential.credentialSubject)
     .filter((key) => !["id", "type"].includes(key))
     .map((name) => {
@@ -35,6 +36,10 @@ export const CredentialDetails = (props) => {
     {
       name: "Proof types",
       value: credential.proof.map(({ type }) => type).join(", "),
+    },
+    {
+      name: "credential json",
+      value: JSON.stringify(credential, null, 2),
     },
   ];
   return (

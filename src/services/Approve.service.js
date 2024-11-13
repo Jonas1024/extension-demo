@@ -45,6 +45,7 @@ export async function proofMethod(msgBytes) {
     did,
     msgBytes,
   );
+  console.log("proofMethod response:" + JSON.stringify(response));
   var config = {
     headers: {
       'Content-Type': 'text/plain'
@@ -52,7 +53,7 @@ export async function proofMethod(msgBytes) {
     responseType: 'json'
   };
   return await axios
-    .post(`${authRequest.body.callbackUrl}`, response.token, config)
+    .post(`${authRequest.body.callbackUrl}`, response, config)
     .then((response) => response)
     .catch((error) => error.toJSON());
 }
