@@ -5,6 +5,9 @@ import { ExtensionService } from './services/Extension.service';
 import { INIT } from './constants';
 import './App.css';
 import CircularProgress from '@mui/material/CircularProgress';
+// import PopupComponent from './PopupComponent';
+
+
 
 function App() {
   const [inited, setInited] = useState(false);

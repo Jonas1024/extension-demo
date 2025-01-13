@@ -1,0 +1,20 @@
+├─package-lock.json 
+├─package.json 
+├─post-process.js 
+├─public 
+│ ├─AuthV2 ---------------------------- // circuit file
+│ ├─credentialAtomicQueryMTPV2 -------- // circuit file
+│ ├─credentialAtomicQuerySigV2 -------- // circuit file
+│ ├─credentialAtomicQueryV3-beta.1 ---- // circuit file
+│ ├─favicon.ico 
+│ ├─icons 
+│ ├─index.html 
+│ ├─manifest.json --------------------- // browser extension config
+│ ├─manifestV2.json 
+│ ├─scripts --------------------------- // extension driver script
+│ │ ├─background.js 
+│ │ ├─contentScript.js 
+│ │ └─popup.js 
+│ └─threadman_thread.js 
+├─src --------------------------------- // extension page
+└─yarn.lock 

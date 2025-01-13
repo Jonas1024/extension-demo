@@ -51,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.281",
     "rewire": "^7.0.0"
   }
 }
