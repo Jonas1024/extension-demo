@@ -15,5 +15,8 @@ document.addEventListener('sendToPopup', function(e) {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'messageFromPopup') {
     console.log('Received from popup:', message.data);
+    // 将消息转发到 Content Script
+    window.postMessage({ action: 'messageFromPopup', data: message.data }, '*');
+
   }
 });

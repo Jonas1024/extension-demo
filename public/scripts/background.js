@@ -71,8 +71,11 @@ chrome.runtime.onConnect.addListener((port) => {
     // 监听 popup 发来的消息，并转发到 content script
     port.onMessage.addListener((message) => {
       if (message.action === 'messageFromPopup') {
+        console.log('Received from popup111:', message.data);
         chrome.windows.getAll({ populate: true }, (windows) => {
+          console.log('Received from popup111222:', message.data);
           const popupTab = windows.flatMap(win => win.tabs).find(tab => tab.id === contentTabId);
+          console.log('Received from popup111333:', popupTab);
           if (popupTab) {
             chrome.tabs.sendMessage(popupTab.id, message);
           }

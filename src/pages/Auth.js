@@ -142,11 +142,19 @@ export const Auth = () => {
 
   async function handleClickReceive() {
     setIsReady(false);
-    let result = await receiveMethod(msgBytes).catch((error) =>
+    let result = await receiveMethod(msgBytes).catch((error) => {
+      console.log("111111: " + error.message);
       setError(error)
+    }
     );
-    if (result === "SAVED") navigate("/");
+    console.log(result);
+    if (result === "SAVED"){
+      console.log("111111: ");
+
+      navigate("/");
+    }
     else {
+      console.log("111111: ????");
       setError(result.message);
       setIsReady(true);
     }
